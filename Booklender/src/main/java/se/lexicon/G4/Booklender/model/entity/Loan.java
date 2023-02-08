@@ -1,8 +1,6 @@
 package se.lexicon.G4.Booklender.model.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -10,6 +8,7 @@ import java.util.Objects;
 public class Loan {
     @Id
     @Column(updatable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long loanId;
 
     private LibraryUser loanTaker;
