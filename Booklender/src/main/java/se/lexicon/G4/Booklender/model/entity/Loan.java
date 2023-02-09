@@ -10,9 +10,12 @@ public class Loan {
     @Column(updatable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long loanId;
-
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "USER_ID")
     private LibraryUser loanTaker;
 
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "BOOK_ID")
     private Book book;
 
     private LocalDate loanDate;
