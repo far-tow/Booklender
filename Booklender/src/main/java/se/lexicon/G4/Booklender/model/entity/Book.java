@@ -31,6 +31,12 @@ public class Book {
 
     }
 
+// Added for Testing
+    public Book(String title,String bookDescription) {
+        this.title = title;
+        this.bookDescription = bookDescription;
+    }
+
     public Book(String title, int maxLoanDays, BigDecimal finePerDay, String bookDescription) {
         this.title = title;
         this.maxLoanDays = maxLoanDays;
