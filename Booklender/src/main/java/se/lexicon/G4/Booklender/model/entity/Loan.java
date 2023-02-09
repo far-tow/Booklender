@@ -1,6 +1,9 @@
 package se.lexicon.G4.Booklender.model.entity;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -36,18 +39,44 @@ public class Loan {
         this.terminated = terminated;
     }
 
-
+    public Loan(LibraryUser loanTaker, Book book, LocalDate loanDate, boolean terminated) {
+        this.loanTaker = loanTaker;
+        this.book = book;
+        this.loanDate = loanDate;
+        this.terminated = terminated;
+    }
 
     // Methods
 
+    public boolean isOverdue (Loan loan){
+        if(loan== null) throw new IllegalArgumentException("Loan was null");
+        LocalDate dueDate= loanDate.plusDays(book.maxLoanDays);
+        boolean overDue = LocalDate.now().isAfter(dueDate);
+
+        return overDue;
+
+
+    }
+
+    public BigDecimal getFine(Loan loan){
+        if(loan == null) throw new IllegalArgumentException("Loan was null");
+        if(loan.isOverdue(loan)) {
+            loan.
+
+
+           return
+
+       }else
+        return null;
+    }
+
+    public boolean extendLoans(Loan loan){
+
+    }
     //Getters and setters
 
     public Long getLoanId() {
         return loanId;
-    }
-
-    public void setLoanId(Long loanId) {
-        this.loanId = loanId;
     }
 
     public LibraryUser getLoanTaker() {
