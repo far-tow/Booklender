@@ -34,23 +34,23 @@ public class LoanRepositoryTest {
 
     @BeforeEach
     public void setup() {
-        BigDecimal bigDecimal= new BigDecimal(10);
+        BigDecimal bigDecimal = new BigDecimal(10);
 
 
-        LibraryUser libraryUser1 = new LibraryUser(LocalDate.now(),"Samuel","samuel.ball@hotmail.com");
+        LibraryUser libraryUser1 = new LibraryUser(LocalDate.now(), "Samuel", "samuel.ball@hotmail.com");
         LibraryUser libraryUser2 = new LibraryUser(LocalDate.now(), "Sanna", "sanna@hotmail.com");
 
         libraryUserRepository.save(libraryUser1);
         libraryUserRepository.save(libraryUser2);
 
 
-        Book book1 = new Book("Sagan om ringen","The story about middle earth");
+        Book book1 = new Book("Sagan om ringen", "The story about middle earth");
         Book book2 = new Book("Narnia", "Discover the world of Narnia");
         bookRepository.save(book1);
         bookRepository.save(book2);
 
-        Loan loan1 = new Loan(libraryUser1,book1,LocalDate.now(),false);
-        Loan loan2 = new Loan(libraryUser2, book2, LocalDate.now(),true);
+        Loan loan1 = new Loan(libraryUser1, book1, LocalDate.now(), false);
+        Loan loan2 = new Loan(libraryUser2, book2, LocalDate.now(), true);
         loanRepository.save(loan1);
         loanRepository.save(loan2);
 
@@ -58,19 +58,24 @@ public class LoanRepositoryTest {
     }
 
     @Test
-    public void findByTerminated(){
+    public void findByTerminated() {
 
-        List<Loan> optionalList= loanRepository.findByTerminated(true);
+        List<Loan> optionalList = loanRepository.findByTerminated(true);
         assertNotNull(optionalList);
-
-
 
 
     }
 
     @Test
-    public void findByBookId(){
+    public void findByBookId() {
         Optional<Loan> expected = loanRepository.findByBookBookId(1);
+        assertNotNull(expected);
+
+    }
+
+    @Test
+    public void findByLoanTakerUserId() {
+        Optional<Loan> expected = loanRepository.findByLoanTakerUserId(1);
         assertNotNull(expected);
 
     }
