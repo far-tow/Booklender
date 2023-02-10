@@ -13,26 +13,26 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false)
 
-    int bookId;
-    @Column(nullable = false,length = 100)
-    String title;
+    private int bookId;
+    @Column(nullable = false, length = 100)
+    private String title;
 
-    boolean available;
+    private boolean available;
 
-    boolean reserved;
+    private boolean reserved;
 
-    int maxLoanDays;
-    BigDecimal finePerDay;
-    String bookDescription;
+    private int maxLoanDays;
+    private BigDecimal finePerDay;
+    private String bookDescription;
 
     public Book() {
-        this.maxLoanDays=10;
+        this.maxLoanDays = 10;
         this.finePerDay = BigDecimal.valueOf(10);
 
     }
 
-// Added for Testing
-    public Book(String title,String bookDescription) {
+    // Added for Testing
+    public Book(String title, String bookDescription) {
         this.title = title;
         this.bookDescription = bookDescription;
     }

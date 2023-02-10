@@ -1,7 +1,9 @@
 package se.lexicon.G4.Booklender.model.entity;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Objects;
 
 @Entity
@@ -36,18 +38,50 @@ public class Loan {
         this.terminated = terminated;
     }
 
-
+    public Loan(LibraryUser loanTaker, Book book, LocalDate loanDate, boolean terminated) {
+        this.loanTaker = loanTaker;
+        this.book = book;
+        this.loanDate = loanDate;
+        this.terminated = terminated;
+    }
 
     // Methods
+
+    public boolean isOverdue() {
+        LocalDate dueDate = loanDate.plusDays(book.getMaxLoanDays());
+        return LocalDate.now().isAfter(dueDate);
+
+    }
+
+    public BigDecimal getFine() {
+        Period time_between_loan = Period.between(loanDate.plusDays(book.getMaxLoanDays()), LocalDate.now());
+        int overdueTime = time_between_loan.getDays();
+        BigDecimal fine = BigDecimal.ZERO;
+        if (overdueTime > 0) {
+            fine = BigDecimal.valueOf(overdueTime * book.getFinePerDay().floatValue());
+
+        }
+
+        return fine;
+
+
+    }
+
+    public boolean extendLoans(LocalDate days) {
+        if (book.isReserved() || isOverdue()) {
+            return false;
+        }
+
+        this.loanDate = LocalDate.now().plusDays(book.getMaxLoanDays());
+
+        return true;
+    }
+
 
     //Getters and setters
 
     public Long getLoanId() {
         return loanId;
-    }
-
-    public void setLoanId(Long loanId) {
-        this.loanId = loanId;
     }
 
     public LibraryUser getLoanTaker() {
