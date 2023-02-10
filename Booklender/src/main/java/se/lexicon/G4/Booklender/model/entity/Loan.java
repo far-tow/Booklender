@@ -1,10 +1,9 @@
 package se.lexicon.G4.Booklender.model.entity;
 
-import org.hibernate.annotations.CreationTimestamp;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Objects;
 
 @Entity
@@ -48,31 +47,37 @@ public class Loan {
 
     // Methods
 
-    public boolean isOverdue (Loan loan){
-        if(loan== null) throw new IllegalArgumentException("Loan was null");
-        LocalDate dueDate= loanDate.plusDays(book.maxLoanDays);
-        boolean overDue = LocalDate.now().isAfter(dueDate);
+    public boolean isOverdue() {
+        LocalDate dueDate = loanDate.plusDays(book.getMaxLoanDays());
+        return LocalDate.now().isAfter(dueDate);
 
-        return overDue;
+    }
+
+    public BigDecimal getFine() {
+        Period time_between_loan = Period.between(loanDate.plusDays(book.getMaxLoanDays()), LocalDate.now());
+        int overdueTime = time_between_loan.getDays();
+        BigDecimal fine = BigDecimal.ZERO;
+        if (overdueTime > 0) {
+            fine = BigDecimal.valueOf(overdueTime * book.getFinePerDay().floatValue());
+
+        }
+
+        return fine;
 
 
     }
 
-    public BigDecimal getFine(Loan loan){
-        if(loan == null) throw new IllegalArgumentException("Loan was null");
-        if(loan.isOverdue(loan)) {
-            loan.
+    public boolean extendLoans(LocalDate days) {
+        if (book.isReserved() || isOverdue()) {
+            return false;
+        }
 
+        this.loanDate = LocalDate.now().plusDays(book.getMaxLoanDays());
 
-           return
-
-       }else
-        return null;
+        return true;
     }
 
-    public boolean extendLoans(Loan loan){
 
-    }
     //Getters and setters
 
     public Long getLoanId() {
