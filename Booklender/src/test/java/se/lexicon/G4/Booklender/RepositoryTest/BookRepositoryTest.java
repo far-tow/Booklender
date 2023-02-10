@@ -41,4 +41,10 @@ public class BookRepositoryTest {
         List<Book> result = testObject.findByReserved(testBook.isReserved());
         assertEquals(expectedSize, result.size());
     }
+
+    @Test
+    public void findByTitle() {
+        List<Book> actual = testObject.findByTitle(testBook.getTitle());
+        assertEquals(1, actual.size());
+    }
 }
