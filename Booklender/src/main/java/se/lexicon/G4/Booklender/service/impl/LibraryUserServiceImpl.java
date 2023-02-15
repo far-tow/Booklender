@@ -10,7 +10,7 @@ import se.lexicon.G4.Booklender.model.dto.LibraryUserDto;
 import se.lexicon.G4.Booklender.model.entity.LibraryUser;
 import se.lexicon.G4.Booklender.repository.LibraryUserRepository;
 import se.lexicon.G4.Booklender.service.LibraryUserService;
-import org.modelmapper.ModelMapper;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -69,7 +69,7 @@ public class LibraryUserServiceImpl implements LibraryUserService {
         LibraryUserDto findLibraryUser = findById(libraryUserDto.getUserId());
         if(findLibraryUser == null)throw new DataNotFoundException("Data not found");
 
-        LibraryUser updateLibraryUser = LibraryUserRepository.save(modelMapper.map(libraryUserDto, LibraryUser.class));
+        LibraryUser updateLibraryUser = libraryUserRepository.save(modelMapper.map(libraryUserDto, LibraryUser.class));
         return modelMapper.map(updateLibraryUser, LibraryUserDto.class);
     }
 

@@ -1,4 +1,4 @@
-package se.lexicon.G4.Booklender;
+package se.lexicon.G4.Booklender.RepositoryTest;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
