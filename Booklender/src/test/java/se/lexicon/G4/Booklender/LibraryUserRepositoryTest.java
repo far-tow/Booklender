@@ -40,7 +40,7 @@ public class LibraryUserRepositoryTest {
         if (foundUser.isPresent()){
             assertEquals(CreatedLibraryUser.getUserId(), foundUser.get().getUserId());
         assertEquals(CreatedLibraryUser.getRegDate(), foundUser.get().getRegDate());
-        assertEquals(CreatedLibraryUser.getUserName(), foundUser.get().getUserName());
+        assertEquals(CreatedLibraryUser.getName(), foundUser.get().getName());
         assertEquals(CreatedLibraryUser.getEmail(), foundUser.get().getEmail());
 
         assertEquals(CreatedLibraryUser, foundUser.get());
