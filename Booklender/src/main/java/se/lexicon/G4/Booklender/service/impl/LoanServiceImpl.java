@@ -19,7 +19,7 @@ public class LoanServiceImpl implements LoanService {
 
     @Autowired
     LoanRepository loanRepository;
-
+    @Autowired
     ModelMapper modelMapper;
 
 
