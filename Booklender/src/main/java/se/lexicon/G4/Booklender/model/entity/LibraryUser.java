@@ -2,7 +2,7 @@ package se.lexicon.G4.Booklender.model.entity;
 
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -29,10 +29,10 @@ public class LibraryUser {
         this.email = email;
     }
 
-    public LibraryUser(int userId, LocalDate regDate, String userName, String email) {
+    public LibraryUser(int userId, LocalDate regDate, String name, String email) {
         this.userId = userId;
         this.regDate = regDate;
-        this.userName = userName;
+        this.name = name;
         this.email = email;
     }
 
