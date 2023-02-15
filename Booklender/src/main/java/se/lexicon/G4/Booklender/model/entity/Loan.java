@@ -47,7 +47,7 @@ public class Loan {
         this.loanTaker = loanTaker;
         this.book = book;
         this.loanDate = loanDate;
-        this.terminated = true;
+        this.terminated = false;
     }
 
     // Methods
