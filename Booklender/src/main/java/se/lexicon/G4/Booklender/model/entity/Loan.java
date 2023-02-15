@@ -90,31 +90,5 @@ public class Loan {
 
     }
 
-    //ToString and Equals/Hashcode
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Loan loan = (Loan) o;
-        return terminated == loan.terminated && Objects.equals(loanId, loan.loanId) && Objects.equals(loanTaker, loan.loanTaker) && Objects.equals(book, loan.book) && Objects.equals(loanDate, loan.loanDate);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(loanId, loanTaker, book, loanDate, terminated);
-    }
-
-    @Override
-    public String toString() {
-        return "Loan{" +
-                "loanId=" + loanId +
-                ", loanTaker=" + loanTaker +
-                ", book=" + book +
-                ", loanDate=" + loanDate +
-                ", terminated=" + terminated +
-                '}';
-    }
 
 }
