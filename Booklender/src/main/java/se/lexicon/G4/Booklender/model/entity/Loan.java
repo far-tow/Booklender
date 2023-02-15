@@ -1,11 +1,16 @@
 package se.lexicon.G4.Booklender.model.entity;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Objects;
 
+@Data
 @Entity
 public class Loan {
     @Id
@@ -38,11 +43,11 @@ public class Loan {
         this.terminated = terminated;
     }
 
-    public Loan(LibraryUser loanTaker, Book book, LocalDate loanDate, boolean terminated) {
+    public Loan(LibraryUser loanTaker, Book book, LocalDate loanDate) {
         this.loanTaker = loanTaker;
         this.book = book;
         this.loanDate = loanDate;
-        this.terminated = terminated;
+        this.terminated = true;
     }
 
     // Methods
@@ -77,45 +82,13 @@ public class Loan {
         return true;
     }
 
-
-    //Getters and setters
-
-    public Long getLoanId() {
-        return loanId;
-    }
-
-    public LibraryUser getLoanTaker() {
-        return loanTaker;
-    }
-
-    public void setLoanTaker(LibraryUser loanTaker) {
-        this.loanTaker = loanTaker;
-    }
-
-    public Book getBook() {
-        return book;
-    }
-
     public void setBook(Book book) {
-        this.book = book;
-    }
+        if (book.isAvailable()) {
+            this.book = book;
+            book.setAvailable(false);
+        }
 
-    public LocalDate getLoanDate() {
-        return loanDate;
     }
-
-    public void setLoanDate(LocalDate loanDate) {
-        this.loanDate = loanDate;
-    }
-
-    public boolean isTerminated() {
-        return terminated;
-    }
-
-    public void setTerminated(boolean terminated) {
-        this.terminated = terminated;
-    }
-
 
     //ToString and Equals/Hashcode
 

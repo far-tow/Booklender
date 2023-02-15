@@ -49,8 +49,8 @@ public class LoanRepositoryTest {
         bookRepository.save(book1);
         bookRepository.save(book2);
 
-        Loan loan1 = new Loan(libraryUser1, book1, LocalDate.now(), false);
-        Loan loan2 = new Loan(libraryUser2, book2, LocalDate.now(), true);
+        Loan loan1 = new Loan(libraryUser1, book1, LocalDate.now());
+        Loan loan2 = new Loan(libraryUser2, book2, LocalDate.now());
         loanRepository.save(loan1);
         loanRepository.save(loan2);
 
