@@ -23,9 +23,9 @@ public class LibraryUser {
     @Column(nullable = false, unique = true)
     private String email;
 
-    public LibraryUser(LocalDate regDate, String userName, String email) {
+    public LibraryUser(LocalDate regDate, String name, String email) {
         this.regDate = regDate;
-        this.name = userName;
+        this.name = name;
         this.email = email;
     }
 
