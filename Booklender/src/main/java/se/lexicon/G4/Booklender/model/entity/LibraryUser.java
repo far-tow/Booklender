@@ -27,6 +27,12 @@ public class LibraryUser {
         this.email = email;
     }
 
+    public LibraryUser(int userId, LocalDate regDate, String userName, String email) {
+        this.userId = userId;
+        this.regDate = regDate;
+        this.userName = userName;
+        this.email = email;
+    }
 
     public LibraryUser() {
 
