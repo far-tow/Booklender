@@ -8,7 +8,7 @@ import se.lexicon.G4.Booklender.repository.LibraryUserRepository;
 
 import java.time.LocalDate;
 @Component
-public class AppCommadLineRunner implements CommandLineRunner {
+public class AppCommandLineRunner implements CommandLineRunner {
 
 @Autowired
         LibraryUserRepository libraryUserRepository;
@@ -17,7 +17,7 @@ public class AppCommadLineRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         LibraryUser user1 = new LibraryUser(LocalDate.now(), "Nive", "Nive6@gmail.com");
-        CreatedLibraryUser = libraryUserRepository.save(user1);
+     //   CreatedLibraryUser = libraryUserRepository.save(user1);
 
     }
 }
