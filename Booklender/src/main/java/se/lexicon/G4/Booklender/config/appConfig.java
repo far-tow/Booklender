@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@OpenAPIDefinition(info = @Info(title = "TODO IT API", version = "0.1", description = "API Information"))
+@OpenAPIDefinition(info = @Info(title = "Book Lender Group 4", version = "0.1", description = "Book Lender API Information"))
 public class appConfig {
 
     @Bean
