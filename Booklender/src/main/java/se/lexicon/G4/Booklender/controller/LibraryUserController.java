@@ -30,6 +30,7 @@ public class LibraryUserController {
             @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = {@Content})
     })
  @GetMapping("/id/{id}")
+
     public ResponseEntity<LibraryUserDto> findById(@PathVariable ("id") Integer id)
     {
 
@@ -40,7 +41,9 @@ public class LibraryUserController {
             @ApiResponse(responseCode = "200", description = "Library User Found", content = {@Content}),
             @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = {@Content})
     })
+
     @GetMapping("/email/{email}")
+
     public ResponseEntity<LibraryUserDto> findByEmail(@PathVariable ("email") String email)
     {
 
@@ -66,11 +69,13 @@ public class LibraryUserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdLibraryUserDto);
     }
 
+
     @Operation(summary = "Update Library User")
     @ApiResponses( value = {
             @ApiResponse(responseCode = "200", description = "Library User updated", content = {@Content}),
             @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = {@Content})
     })
+
 
     @PutMapping("/")
     public ResponseEntity<Void> update(@RequestBody @Valid LibraryUserDto libraryUserDto){
@@ -83,6 +88,7 @@ public class LibraryUserController {
             @ApiResponse(responseCode = "200", description = "Library User deleted", content = {@Content}),
             @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = {@Content})
     })
+
     @DeleteMapping ("/")
     public ResponseEntity<Void> deleteById(@RequestBody @Valid Integer id){
         libraryUserService.delete(id);
