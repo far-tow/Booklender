@@ -66,12 +66,23 @@ public class LibraryUserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdLibraryUserDto);
     }
 
+    @Operation(summary = "Update Library User")
+    @ApiResponses( value = {
+            @ApiResponse(responseCode = "200", description = "Library User updated", content = {@Content}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = {@Content})
+    })
 
     @PutMapping("/")
     public ResponseEntity<Void> update(@RequestBody @Valid LibraryUserDto libraryUserDto){
         libraryUserService.update(libraryUserDto);
         return ResponseEntity.noContent().build();
     }
+
+    @Operation(summary = "Delete Library User")
+    @ApiResponses( value = {
+            @ApiResponse(responseCode = "200", description = "Library User deleted", content = {@Content}),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = {@Content})
+    })
     @DeleteMapping ("/")
     public ResponseEntity<Void> deleteById(@RequestBody @Valid Integer id){
         libraryUserService.delete(id);
