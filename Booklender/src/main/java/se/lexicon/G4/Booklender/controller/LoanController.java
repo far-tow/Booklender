@@ -26,43 +26,47 @@ public class LoanController {
 
 
     @Operation(summary = "Find Loan by id")
-    @ApiResponses( value = {
+    @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Found the loan", content = {@Content}),
             @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = {@Content})
     })
     @GetMapping("/{id}")
-    public ResponseEntity<LoanDto> findById(@PathVariable("id")Integer id){
+    public ResponseEntity<LoanDto> findById(@PathVariable("id") Integer id) {
         return ResponseEntity.ok(loanService.findById(id.longValue()));
     }
+
     @Operation(summary = "Find Book by id")
-    @ApiResponses( value = {
+    @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Found the Book", content = {@Content}),
             @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = {@Content})
     })
     @GetMapping("/bookId{bookId}")
-    public ResponseEntity<List<LoanDto>> findByBookId(@PathVariable("bookId")Integer bookId){
+    public ResponseEntity<List<LoanDto>> findByBookId(@PathVariable("bookId") Integer bookId) {
         return ResponseEntity.ok(loanService.findByBookId(bookId));
     }
+
     @Operation(summary = "Find User by id")
-    @ApiResponses( value = {
+    @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Found the User", content = {@Content}),
             @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = {@Content})
     })
     @GetMapping("/userId{userId}")
-    public ResponseEntity<List<LoanDto>> findByUserId(@PathVariable("id")Integer userId){
+    public ResponseEntity<List<LoanDto>> findByUserId(@PathVariable("id") Integer userId) {
         return ResponseEntity.ok(loanService.findByUserId(userId));
     }
+
     @Operation(summary = "Find by Terminated")
-    @ApiResponses( value = {
+    @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Is Terminated", content = {@Content}),
             @ApiResponse(responseCode = "400", description = "Invalid operation", content = {@Content})
     })
     @GetMapping("/terminated{terminated}")
-    public ResponseEntity<List<LoanDto>> findByTerminated(@PathVariable("terminated")boolean terminated){
+    public ResponseEntity<List<LoanDto>> findByTerminated(@PathVariable("terminated") boolean terminated) {
         return ResponseEntity.ok(loanService.findByTerminated());
     }
+
     @GetMapping("/")
-    public ResponseEntity<List<LoanDto>> findAll(){
+    public ResponseEntity<List<LoanDto>> findAll() {
         return ResponseEntity.status(HttpStatus.OK).body(loanService.findAll());
     }
 
