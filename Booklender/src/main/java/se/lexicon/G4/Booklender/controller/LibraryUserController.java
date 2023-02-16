@@ -72,17 +72,10 @@ public class LibraryUserController {
         libraryUserService.update(libraryUserDto);
         return ResponseEntity.noContent().build();
     }
-    @PutMapping("/")
-    public ResponseEntity<Void> deletebyId(@RequestBody @Valid Integer id){
+    @DeleteMapping ("/")
+    public ResponseEntity<Void> deleteById(@RequestBody @Valid Integer id){
         libraryUserService.delete(id);
         return ResponseEntity.noContent().build();
     }
-
-
-
-
-
-
-
 
 }
