@@ -29,7 +29,7 @@ public class LibraryUserController {
             @ApiResponse(responseCode = "200", description = "Library User Found", content = {@Content}),
             @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = {@Content})
     })
- @GetMapping("/{id}")
+ @GetMapping("/id/{id}")
     public ResponseEntity<LibraryUserDto> findById(@PathVariable ("id") Integer id)
     {
 
