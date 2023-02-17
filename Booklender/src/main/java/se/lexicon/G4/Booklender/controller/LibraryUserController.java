@@ -11,10 +11,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import se.lexicon.G4.Booklender.model.dto.LibraryUserDto;
+import se.lexicon.G4.Booklender.model.entity.LibraryUser;
 import se.lexicon.G4.Booklender.service.LibraryUserService;
 
 import javax.validation.Valid;
 import java.util.List;
+
+// Methods updated by Nivethitha
 
 @RestController
 @RequestMapping("/api/v1/library_user")
@@ -89,8 +92,8 @@ public class LibraryUserController {
             @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = {@Content})
     })
 
-    @DeleteMapping ("/")
-    public ResponseEntity<Void> deleteById(@RequestBody @Valid Integer id){
+    @DeleteMapping ("/id/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable("id") Integer id){
         libraryUserService.delete(id);
         return ResponseEntity.noContent().build();
     }
