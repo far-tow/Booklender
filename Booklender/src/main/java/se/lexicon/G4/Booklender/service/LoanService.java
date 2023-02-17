@@ -11,7 +11,7 @@ public interface LoanService {
 
     List<LoanDto> findByUserId(int userId);
 
-    List<LoanDto> findByTerminated();
+    List<LoanDto> findByTerminated(boolean terminated);
 
     List<LoanDto> findAll();
 
