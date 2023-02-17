@@ -62,7 +62,7 @@ public class LoanController {
     })
     @GetMapping("/terminated{terminated}")
     public ResponseEntity<List<LoanDto>> findByTerminated(@PathVariable("terminated") boolean terminated) {
-        return ResponseEntity.ok(loanService.findByTerminated());
+        return ResponseEntity.ok(loanService.findByTerminated(terminated));
     }
 
     @GetMapping("/")
