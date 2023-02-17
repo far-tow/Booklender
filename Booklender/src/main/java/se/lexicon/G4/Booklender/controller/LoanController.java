@@ -96,8 +96,8 @@ public class LoanController {
             @ApiResponse(responseCode = "200", description = "Loan is deleted", content = {@Content}),
             @ApiResponse(responseCode = "400", description = "Invalid Loan id supplied", content = {@Content})
     })
-    @DeleteMapping ("/")
-    public ResponseEntity<Void> deleteById(@RequestBody @Valid Long id){
+    @DeleteMapping ("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable("id") @Valid Long id){
         loanService.delete(id);
         return ResponseEntity.noContent().build();
     }

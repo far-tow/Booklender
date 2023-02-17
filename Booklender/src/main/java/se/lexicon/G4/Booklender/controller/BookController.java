@@ -11,14 +11,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import se.lexicon.G4.Booklender.model.dto.BookDto;
-import se.lexicon.G4.Booklender.model.dto.LibraryUserDto;
 import se.lexicon.G4.Booklender.service.BookService;
 
 import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/book")
+@RequestMapping("/api/v1/book")
 @Validated
 public class BookController {
 
@@ -105,8 +104,8 @@ public class BookController {
             @ApiResponse(responseCode = "200", description = "Book is deleted", content = {@Content}),
             @ApiResponse(responseCode = "400", description = "Invalid Book id supplied", content = {@Content})
     })
-    @DeleteMapping ("/")
-    public ResponseEntity<Void> deleteById(@RequestBody @Valid Integer id){
+    @DeleteMapping ("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable("id") @Valid Integer id){
         bookService.delete(id);
         return ResponseEntity.noContent().build();
     }
