@@ -104,9 +104,6 @@ public class BookServiceImpl implements BookService {
 
         bookRepository.deleteById(bookId);
 
-        BookDto book = findById(bookId);
-        if (book != null)
-            return false;
         return true;
     }
 }
