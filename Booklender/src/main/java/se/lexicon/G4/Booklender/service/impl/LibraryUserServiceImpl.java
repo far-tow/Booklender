@@ -55,7 +55,7 @@ public class LibraryUserServiceImpl implements LibraryUserService {
     @Override
     public LibraryUserDto create(LibraryUserDto libraryUserDto) {
         if(libraryUserDto == null) throw  new IllegalArgumentException("Library User was null");
-        if(libraryUserDto.getUserId()== 0) throw new IllegalArgumentException("Library User should not be zero");
+        if(libraryUserDto.getUserId()!= 0) throw new IllegalArgumentException("Library User id must be zero");
 
         LibraryUser createdLibraryUser = libraryUserRepository.save(modelMapper.map(libraryUserDto, LibraryUser.class));
         return modelMapper.map(createdLibraryUser, LibraryUserDto.class);
