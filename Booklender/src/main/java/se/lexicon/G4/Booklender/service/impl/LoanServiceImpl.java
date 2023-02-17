@@ -27,7 +27,7 @@ public class LoanServiceImpl implements LoanService {
     public LoanDto findById(Long loanId) {
         if (loanId == null) throw new IllegalArgumentException("Id can not be null");
         Optional<Loan> optionalLoan = loanRepository.findById(loanId);
-        if (!optionalLoan.isPresent()) throw new DataNotFoundException("role id was not found");
+        if (!optionalLoan.isPresent()) throw new DataNotFoundException("Loan id was not found");
         Loan entity = optionalLoan.get();
         return modelMapper.map(entity, LoanDto.class);
     }
@@ -51,9 +51,9 @@ public class LoanServiceImpl implements LoanService {
         }.getType());
     }
 
-    @Override
-    public List<LoanDto> findByTerminated() {
-        List<Loan> loanList = loanRepository.findByTerminated(true);
+
+    public List<LoanDto> findByTerminated(boolean terminated) {
+        List<Loan> loanList = loanRepository.findByTerminated(terminated);
 
         return modelMapper.map(loanList, new TypeToken<List<LoanDto>>() {
         }.getType());

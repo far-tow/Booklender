@@ -86,7 +86,7 @@ public class Loan {
         if (book.isAvailable()) {
             this.book = book;
             book.setAvailable(false);
-        }
+        }else throw new IllegalArgumentException("Book is already loaned by other");
 
     }
 
