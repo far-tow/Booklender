@@ -51,7 +51,7 @@ public class LoanServiceImpl implements LoanService {
         }.getType());
     }
 
-
+    @Override
     public List<LoanDto> findByTerminated(boolean terminated) {
         List<Loan> loanList = loanRepository.findByTerminated(terminated);
 
