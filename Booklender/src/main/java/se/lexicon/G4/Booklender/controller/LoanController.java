@@ -18,7 +18,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/vi/loan")
+@RequestMapping("/api/v1/loan")
 @Validated
 public class LoanController {
     @Autowired
@@ -50,8 +50,8 @@ public class LoanController {
             @ApiResponse(responseCode = "200", description = "Found the User", content = {@Content}),
             @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = {@Content})
     })
-    @GetMapping("/userId{userId}")
-    public ResponseEntity<List<LoanDto>> findByUserId(@PathVariable("id") Integer userId) {
+    @GetMapping("/userId")
+    public ResponseEntity<List<LoanDto>> findByUserId(Integer userId) {
         return ResponseEntity.ok(loanService.findByUserId(userId));
     }
 
@@ -60,8 +60,8 @@ public class LoanController {
             @ApiResponse(responseCode = "200", description = "Is Terminated", content = {@Content}),
             @ApiResponse(responseCode = "400", description = "Invalid operation", content = {@Content})
     })
-    @GetMapping("/terminated{terminated}")
-    public ResponseEntity<List<LoanDto>> findByTerminated(@PathVariable("terminated") boolean terminated) {
+    @GetMapping("/terminated{concluded}")
+    public ResponseEntity<List<LoanDto>> findByTerminated(@PathVariable("concluded") boolean terminated) {
         return ResponseEntity.ok(loanService.findByTerminated());
     }
 
